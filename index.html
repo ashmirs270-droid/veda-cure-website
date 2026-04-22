@@ -3,106 +3,615 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Growth Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>VEDA Cure | Natural Ayurvedic Healing for Pain & Wellness</title>
+  <meta
+    name="description"
+    content="VEDA Cure offers natural Ayurvedic oils for pain relief and skin wellness. Order trusted herbal products directly on WhatsApp."
+  />
+  <meta name="theme-color" content="#6BC048" />
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%236BC048'/%3E%3Cpath d='M85 28c-4 24-20 40-44 44 4-24 20-40 44-44z' fill='white'/%3E%3Cpath d='M30 84c5-18 18-31 36-36-5 18-18 31-36 36z' fill='%23e9f6e2'/%3E%3C/svg%3E"
+  />
+  <style>
+    :root {
+      --green: #6bc048;
+      --green-dark: #4b9e2a;
+      --text: #26312e;
+      --muted: #6f7b76;
+      --bg-soft: #f7fbf5;
+      --white: #ffffff;
+      --grey: #f2f4f3;
+      --shadow: 0 10px 30px rgba(35, 57, 44, 0.09);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Poppins, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--container));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 1.4rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+      cursor: pointer;
+      font-size: 0.96rem;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      box-shadow: 0 8px 20px rgba(107, 192, 72, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(75, 158, 42, 0.32);
+    }
+
+    .top-bar {
+      background: linear-gradient(180deg, #f3faef, #fdfefd);
+      border-bottom: 1px solid #ebf2e8;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(4px);
+    }
+
+    .nav {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+    }
+
+    .leaf {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      box-shadow: 0 6px 16px rgba(107, 192, 72, 0.3);
+    }
+
+    .tagline {
+      display: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top right, #ebf7e4 0, #ffffff 45%);
+      padding: 4.8rem 0 4.3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.13;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      max-width: 760px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 1.4rem;
+      font-size: clamp(1rem, 1.8vw, 1.14rem);
+    }
+
+    .hero-card {
+      background: var(--white);
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 1px solid #edf2eb;
+      display: grid;
+      gap: 0.8rem;
+      max-width: 420px;
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      color: #2c4a33;
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      color: #3c4a44;
+      font-size: 0.95rem;
+    }
+
+    .hero-list li::before {
+      content: "✓";
+      color: var(--green-dark);
+      font-weight: 700;
+      margin-right: 0.45rem;
+    }
+
+    .products {
+      background: var(--bg-soft);
+    }
+
+    .cards {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid #e8efe4;
+      border-radius: var(--radius-lg);
+      padding: 1.3rem;
+      box-shadow: 0 6px 20px rgba(55, 77, 63, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 26px rgba(55, 77, 63, 0.13);
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.76rem;
+      color: var(--green-dark);
+      background: #eef9e8;
+      border: 1px solid #dbf0cf;
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      font-size: 0.94rem;
+    }
+
+    .benefits {
+      list-style: none;
+      margin-bottom: 1rem;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.93rem;
+      color: #3f4e47;
+    }
+
+    .benefits li::before {
+      content: "•";
+      color: var(--green-dark);
+      margin-right: 0.45rem;
+      font-weight: 700;
+    }
+
+    .why-grid,
+    .testimonials-grid {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .why-item,
+    .review {
+      background: var(--white);
+      border: 1px solid #e8efe4;
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      box-shadow: 0 5px 14px rgba(44, 66, 55, 0.07);
+    }
+
+    .why-item h4,
+    .review h4 {
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .why-item p,
+    .review p {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .stars {
+      color: #ffb400;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1.1px;
+    }
+
+    .about {
+      background: linear-gradient(180deg, #fcfefd 0%, #f7fbf5 100%);
+    }
+
+    .about-box {
+      background: var(--white);
+      border: 1px solid #e8efe4;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      margin-top: 0.7rem;
+    }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 5rem;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border: 1px solid #e8efe4;
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      max-width: 560px;
+      margin: 1.4rem auto 0;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info {
+      margin: 0.8rem 0 1rem;
+      color: #42514b;
+    }
+
+    .contact-info strong {
+      color: #2f3e38;
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+      box-shadow: 0 10px 20px rgba(16, 145, 66, 0.45);
+      z-index: 100;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .floating-wa:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 24px rgba(16, 145, 66, 0.52);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      border-top: 1px solid #edf2eb;
+      padding: 1.1rem 0 5rem;
+      text-align: center;
+      color: #7a8681;
+      font-size: 0.88rem;
+    }
+
+    @media (min-width: 700px) {
+      .tagline {
+        display: block;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .why-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 992px) {
+      .section {
+        padding: 5rem 0;
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 5.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar card">
-      <div>
-        <p class="eyebrow">Self-Improvement System</p>
-        <h1>Personal Development Dashboard</h1>
+  <header class="top-bar">
+    <div class="container nav">
+      <div class="brand" aria-label="VEDA Cure brand">
+        <img src="logo.png" alt="VEDA Cure Logo" style="height:75px; margin:10px 0;">
       </div>
-      <div class="header-actions">
-        <button id="themeToggle" class="btn secondary">🌙 Dark</button>
-        <button id="exportData" class="btn secondary">Export JSON</button>
-      </div>
-    </header>
+      <p class="tagline">Ancient Wisdom. Natural Healing.</p>
+      <a class="btn btn-primary" href="https://wa.me/919773812515?text=Hello%20VEDA%20Cure%2C%20I%20want%20to%20order." target="_blank" rel="noopener">Order on WhatsApp</a>
+    </div>
+  </header>
 
-    <section class="stats-grid">
-      <article class="card stat-card">
-        <p>Daily Completion</p>
-        <h2 id="dailyCompletion">0%</h2>
-      </article>
-      <article class="card stat-card">
-        <p>Total Points</p>
-        <h2 id="totalPoints">0</h2>
-      </article>
-      <article class="card stat-card">
-        <p>Level</p>
-        <h2 id="levelDisplay">1</h2>
-      </article>
-      <article class="card stat-card">
-        <p>Best Streak</p>
-        <h2 id="bestStreak">0 days</h2>
-      </article>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <h1>Natural Ayurvedic Healing for Pain &amp; Wellness</h1>
+          <p>
+            Discover the purity of herbal care with VEDA Cure. Our Ayurvedic oils are crafted using trusted natural ingredients to support pain relief, skin comfort, and everyday wellness.
+          </p>
+          <a class="btn btn-primary" href="https://wa.me/919773812515?text=Hello%20VEDA%20Cure%2C%20I%20want%20to%20order." target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+        <aside class="hero-card fade-in" aria-label="Brand highlights">
+          <h3>Why people choose VEDA Cure</h3>
+          <ul class="hero-list">
+            <li>100% herbal-inspired Ayurvedic blends</li>
+            <li>Made for daily pain and skin wellness support</li>
+            <li>Easy WhatsApp ordering and quick support</li>
+          </ul>
+        </aside>
+      </div>
     </section>
 
-    <main class="main-grid">
-      <section class="card panel">
-        <div class="panel-head">
-          <h3>Daily Habit Tracker</h3>
-          <span id="todayDate"></span>
-        </div>
-        <div id="habitList" class="habit-list"></div>
-      </section>
+    <section class="section products" id="products">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Our Ayurvedic Products</h2>
+        <p class="section-subtitle" style="text-align:center;">Simple, effective herbal care designed for modern lifestyles with traditional Ayurvedic wisdom.</p>
 
-      <section class="card panel">
-        <div class="panel-head">
-          <h3>Add Custom Habit</h3>
-        </div>
-        <form id="habitForm" class="stack-form">
-          <label>
-            Habit name
-            <input type="text" id="habitName" required placeholder="e.g., 20 min exercise" />
-          </label>
-          <label>
-            Daily goal (optional number)
-            <input type="number" id="habitGoal" min="1" placeholder="Leave empty for checkbox habit" />
-          </label>
-          <button type="submit" class="btn">Add Habit</button>
-        </form>
-      </section>
+        <div class="cards">
+          <article class="card fade-in">
+            <span class="pill">Best Seller</span>
+            <h3>VEDA Cure Vitality Capsules</h3>
+            <div style="display:flex; justify-content:center; align-items:center; margin:25px 0;">
+             <img src="product.png" alt="VEDA Cure Capsules" 
+             style="max-width:300px; border-radius:15px; padding:15px; background:white; box-shadow:0 15px 35px rgba(0,0,0,0.15); transition:0.3s;">
+            </div>
+            <p>Advanced Ayurvedic capsule formulation for strength, stamina, and daily energy support.</p>
+            <ul class="benefits">
+              <li>Supports stamina and endurance</li>
+              <li>Helps improve daily energy levels</li>
+              <li>Promotes strength and confidence</li>
+              <li>Made with natural Ayurvedic herbs</li>
+            </ul>
+            
+            <p><strong>Price: ₹1999</strong></p>
 
-      <section class="card panel">
-        <div class="panel-head">
-          <h3>Performance Dashboard</h3>
-        </div>
-        <div class="chart-wrap">
-          <canvas id="weeklyChart"></canvas>
-        </div>
-        <div class="chart-wrap">
-          <canvas id="streakChart"></canvas>
-        </div>
-      </section>
+            <p style="color:red; font-weight:bold;">Limited Stock Available</p>
+            <a class="btn btn-primary" href="https://wa.me/919773812515?text=I%20want%20to%20order%20Pain%20Relief%20Oil" target="_blank" rel="noopener">Order on WhatsApp</a>
+          </article>
 
-      <section class="card panel">
-        <div class="panel-head">
-          <h3>Growth Journal</h3>
+          <article class="card fade-in">
+            <span class="pill">Skin Care</span>
+            <h3>Herbal Skin Oil</h3>
+            <p>Gentle, plant-powered skin oil made to nourish and calm sensitive skin concerns.</p>
+            <ul class="benefits">
+              <li>Helps with itching and irritation comfort</li>
+              <li>Supports skin prone to allergy reactions</li>
+              <li>Deeply moisturizes dry and rough skin</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/919773812515?text=I%20want%20to%20order%20Herbal%20Skin%20Oil" target="_blank" rel="noopener">Order on WhatsApp</a>
+          </article>
         </div>
-        <label>
-          Date
-          <input type="date" id="journalDate" />
-        </label>
-        <textarea id="journalText" rows="5" placeholder="Write daily reflection..."></textarea>
-        <button id="saveJournal" class="btn">Save Reflection</button>
-        <div id="journalHistory" class="journal-history"></div>
-      </section>
+      </div>
+    </section>
 
-      <section class="card panel full-width">
-        <div class="panel-head">
-          <h3>Calendar & Badges</h3>
+    <section class="section" id="why-us">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Why Choose VEDA Cure</h2>
+        <p class="section-subtitle" style="text-align:center;">We blend authentic Ayurvedic values with clean, customer-first product quality.</p>
+
+        <div class="why-grid">
+          <div class="why-item fade-in">
+            <h4>Natural Ingredients</h4>
+            <p>Our oils are inspired by nature and selected herbal ingredients.</p>
+          </div>
+          <div class="why-item fade-in">
+            <h4>No Harmful Chemicals</h4>
+            <p>Made without harsh additives, focused on gentle care.</p>
+          </div>
+          <div class="why-item fade-in">
+            <h4>Ayurvedic Formula</h4>
+            <p>Traditional wellness principles crafted for modern life.</p>
+          </div>
+          <div class="why-item fade-in">
+            <h4>Trusted by Customers</h4>
+            <p>Loved by families looking for reliable daily herbal support.</p>
+          </div>
         </div>
-        <div id="badgeList" class="badge-list"></div>
-        <div id="calendar" class="calendar"></div>
-      </section>
-    </main>
-  </div>
+      </div>
+    </section>
 
-  <script src="app.js"></script>
+    <section class="section products" id="testimonials">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">What Our Customers Say</h2>
+        <div class="testimonials-grid">
+          <blockquote class="review fade-in">
+            <div class="stars" aria-label="5 star rating">★★★★★</div>
+            <p>"After using these capsules, I feel more energetic and active throughout the day."</p>
+            <h4>- Shrkant Sah.</h4>
+          </blockquote>
+          <blockquote class="review fade-in">
+            <div class="stars" aria-label="5 star rating">★★★★★</div>
+            <p>"My stamina has improved a lot in just a few weeks. Good natural product."</p>
+            <h4>- Rahul K.</h4>
+          </blockquote>
+          <blockquote class="review fade-in">
+            <div class="stars" aria-label="5 star rating">★★★★★</div>
+            <p>"My husband is Feeling more confident and less tired now. Highly recommended."</p>
+            <h4>- Meena R.</h4>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="about-box fade-in">
+          <h2 class="section-title">About VEDA Cure</h2>
+          <p>
+            At VEDA Cure, we believe healing starts with nature. Inspired by the timeless science of Ayurveda, we create herbal wellness oils that support comfort, balance, and healthier living—without compromising on purity.
+          </p>
+          <p><strong>Ancient Wisdom. Natural Healing.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact &amp; Orders</h2>
+        <p class="section-subtitle">Ready to experience Ayurvedic wellness? Message us directly on WhatsApp.</p>
+
+        <div class="contact-card fade-in">
+          <div class="contact-info">
+            <p><strong>WhatsApp:</strong> +91 97738 12515</p>
+            <p><strong>Location:</strong> India</p>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/919773812515?text=Hello%20VEDA%20Cure%2C%20please%20share%20product%20details." target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a
+    class="floating-wa"
+    href="https://wa.me/919773812515?text=Hello%20VEDA%20Cure"
+    aria-label="Order on WhatsApp"
+    target="_blank"
+    rel="noopener"
+  >
+    ✆
+  </a>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> VEDA Cure. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
