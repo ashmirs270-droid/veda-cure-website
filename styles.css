@@ -188,3 +188,113 @@ textarea { resize: vertical; }
 @media (max-width: 860px) {
   .main-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== PREMIUM UPGRADE ===== */
+
+/* Better font feel */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Cards (products + features + reviews) */
+.card, .feature-box, .review {
+  border-radius: 16px;
+  padding: 20px;
+  background: var(--card);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.card:hover, .feature-box:hover, .review:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+/* Buttons */
+.btn {
+  background: #6BC048;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #58a83a;
+  transform: scale(1.05);
+}
+
+/* Product images */
+.card img {
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Benefits list */
+ul {
+  padding-left: 18px;
+}
+
+ul li {
+  margin-bottom: 6px;
+}
+
+/* ===== MOBILE OPTIMIZATION ===== */
+
+@media (max-width: 768px) {
+
+  /* Stack cards vertically */
+  .cards,
+  .testimonials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Reduce padding */
+  .section {
+    padding: 30px 15px;
+  }
+
+  /* Headings smaller */
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  /* Buttons full width */
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Fix product image size */
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Improve spacing */
+  .card, .feature-box {
+    padding: 16px;
+  }
+
+}
