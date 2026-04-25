@@ -332,3 +332,50 @@ ul li {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== FEATURES SECTION FIX ===== */
+
+.features {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.feature-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+
+  padding: 18px 20px;
+  margin-bottom: 15px;
+
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  transition: 0.3s ease;
+}
+
+/* Icon styling */
+.feature-box span {
+  font-size: 22px;
+  min-width: 30px;
+}
+
+/* Text block */
+.feature-box h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.feature-box p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Hover effect (premium feel) */
+.feature-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
