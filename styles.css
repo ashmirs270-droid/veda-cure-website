@@ -147,3 +147,24 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== HERO RIGHT BOX ===== */
+.hero-right {
+  max-width: 480px;
+  width: 100%;
+  padding: 25px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.hero-right ul {
+  padding-left: 0;
+}
+
+.hero-right li {
+  list-style: none;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
