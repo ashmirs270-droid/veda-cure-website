@@ -1,2 +1,2 @@
-import { h } from './utils.js';
+import { h } from './utils.jsx';
 export function Benefits(){ const b=['Supports Daily Vitality','Supports Stamina & Endurance','Supports Active Lifestyle','Supports Confidence & Wellbeing','Supports Energy Levels','Supports Overall Wellness']; return h('section',{className:'section benefits'},h('div',{className:'container'},h('p',{className:'eyebrow center'},'Compliant Wellness Support'),h('h2',{className:'section-title'},'Made for Modern Lifestyles'),h('div',{className:'icon-grid'},b.map((x,i)=>h('div',{className:'icon-card',key:x},h('span',null,['⚡','🏃','🌿','✨','☀️','🛡️'][i]),h('h3',null,x)))))); }

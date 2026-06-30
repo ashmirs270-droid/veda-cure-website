@@ -1,3 +1,3 @@
-import { h } from './utils.js';
+import { h } from './utils.jsx';
 const ingredients=['Ashwagandha','Shilajit','Safed Musli','Kaunch Beej','Gokshura'];
 export function Ingredients(){ return h('section',{id:'ingredients',className:'section'},h('div',{className:'container'},h('p',{className:'eyebrow center'},'Traditional Ingredient Showcase'),h('h2',{className:'section-title'},'Herbal Ingredients with Heritage'),h('div',{className:'ingredient-grid'},ingredients.map((name)=>h('article',{className:'ingredient-card',key:name},h('div',{className:'ingredient-image','aria-hidden':'true'},'🌿'),h('h3',null,name),h('p',null,`${name} is valued in traditional wellness practices and selected to complement active daily routines, vitality, balance, and overall wellbeing.`)))))); }
