@@ -1,4 +1,4 @@
-import { h, whatsappUrl } from './utils.js';
+import { h, whatsappUrl } from './utils.jsx';
 const links = ['Home', 'Products', 'Ingredients', 'About Us', 'Reviews', 'FAQ', 'Contact'];
 export function Navbar({ cartCount }) {
   const idFor = (label) => label === 'Home' ? 'home' : label.toLowerCase().replace(' us', '').replaceAll(' ', '-');

@@ -1,0 +1,4 @@
+import productImage from '../assets/product.png';
+import { h } from './utils.jsx';
+const shots=['Premium capsule bottle mockup','Luxury oil packaging','Complete wellness combo','Real product photo'];
+export function Gallery({ lightbox, setLightbox }){ return h('section',{className:'section gallery'},h('div',{className:'container'},h('p',{className:'eyebrow center'},'Product Gallery'),h('h2',{className:'section-title'},'Luxury Packaging, Trusted Presentation'),h('div',{className:'gallery-track'},shots.map((alt,i)=>h('button',{className:'gallery-item',key:alt,onClick:()=>setLightbox(i),'aria-label':`Open ${alt}`},h('img',{src: productImage,alt,loading:'lazy'})))), lightbox!==null && h('div',{className:'lightbox',onClick:()=>setLightbox(null),role:'dialog','aria-modal':'true'},h('button',{className:'lightbox-close','aria-label':'Close gallery'},'×'),h('img',{src: productImage,alt:shots[lightbox]})))); }

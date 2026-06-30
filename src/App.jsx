@@ -1,22 +1,19 @@
 import React, { useMemo, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Navbar } from './Components/Navbar.js';
-import { Hero } from './Components/Hero.js';
-import { TrustBar } from './Components/TrustBar.js';
-import { Products } from './Components/Products.js';
-import { Pricing } from './Components/Pricing.js';
-import { Ingredients } from './Components/Ingredients.js';
-import { Benefits } from './Components/Benefits.js';
-import { About } from './Components/About.js';
-import { Gallery } from './Components/Gallery.js';
-import { Testimonials } from './Components/Testimonials.js';
-import { ComboOffer } from './Components/ComboOffer.js';
-import { FAQ } from './Components/FAQ.js';
-import { Contact } from './Components/Contact.js';
-import { Footer } from './Components/Footer.js';
-
-const h = React.createElement;
-const whatsappUrl = 'https://wa.me/919773812515';
+import { Navbar } from './components/Navbar.jsx';
+import { Hero } from './components/Hero.jsx';
+import { TrustBar } from './components/TrustBar.jsx';
+import { Products } from './components/Products.jsx';
+import { Pricing } from './components/Pricing.jsx';
+import { Ingredients } from './components/Ingredients.jsx';
+import { Benefits } from './components/Benefits.jsx';
+import { About } from './components/About.jsx';
+import { Gallery } from './components/Gallery.jsx';
+import { Testimonials } from './components/Testimonials.jsx';
+import { ComboOffer } from './components/ComboOffer.jsx';
+import { FAQ } from './components/FAQ.jsx';
+import { Contact } from './components/Contact.jsx';
+import { Footer } from './components/Footer.jsx';
+import { h, whatsappUrl } from './components/utils.jsx';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -67,4 +64,4 @@ function App() {
   );
 }
 
-createRoot(document.getElementById('root')).render(h(App));
+export default App;
